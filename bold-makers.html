@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bold — Sitios Web que Convierten para tu Negocio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --white: #F5F3EE;
+    --accent: #C8FF00;
+    --accent-dim: #9FCC00;
+    --gray-1: #141414;
+    --gray-2: #1E1E1E;
+    --gray-3: #2A2A2A;
+    --gray-4: #444;
+    --gray-5: #888;
+    --gray-6: #AAAAAA;
+    --radius: 4px;
+    --radius-lg: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--gray-6);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--black) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius);
+    font-weight: 500 !important;
+    font-size: 0.82rem !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent-dim) !important; }
+
+  /* ─── HERO ────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 2.5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,255,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,255,0,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 60% 30%, rgba(200,255,0,0.06) 0%, transparent 70%);
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    max-width: 900px;
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--gray-6);
+    line-height: 1.6;
+    max-width: 340px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.85rem 2rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--accent-dim); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--gray-6);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    padding: 0.85rem 1.5rem;
+    border: 1px solid var(--gray-3);
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--gray-5); color: var(--white); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 5rem;
+    right: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray-5);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--gray-4), transparent);
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-line {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ─── MARQUEE ─────────────────────────────────────────── */
+  .marquee-wrap {
+    border-top: 1px solid var(--gray-3);
+    border-bottom: 1px solid var(--gray-3);
+    overflow: hidden;
+    padding: 1rem 0;
+    background: var(--gray-1);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 18s linear infinite;
+    width: max-content;
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 2.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-4);
+    white-space: nowrap;
+  }
+
+  .marquee-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── SECTIONS BASE ───────────────────────────────────── */
+  section { padding: 7rem 2.5rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--gray-6);
+    line-height: 1.65;
+    max-width: 500px;
+  }
+
+  /* ─── ABOUT / PITCH ────────────────────────────────────── */
+  .about {
+    background: var(--gray-1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--gray-3);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .about-stat {
+    background: var(--gray-2);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .about-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .about-stat-label {
+    font-size: 0.8rem;
+    color: var(--gray-5);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ─── SERVICES ────────────────────────────────────────── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gray-3);
+    margin-top: 4rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--gray-1);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover { background: var(--gray-2); }
+
+  .service-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gray-4);
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(200,255,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .service-card p {
+    font-size: 0.85rem;
+    color: var(--gray-6);
+    line-height: 1.65;
+  }
+
+  .service-arrow {
+    position: absolute;
+    top: 2.5rem;
+    right: 2rem;
+    color: var(--gray-4);
+    font-size: 1.2rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .service-card:hover .service-arrow { color: var(--accent); transform: translate(2px, -2px); }
+
+  /* ─── HOW IT WORKS ────────────────────────────────────── */
+  .how {
+    background: var(--gray-1);
+  }
+
+  .how-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+
+  .how-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .how-step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--gray-3);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .how-step:first-child { border-top: 1px solid var(--gray-3); }
+
+  .how-step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gray-4);
+    letter-spacing: 0.08em;
+    min-width: 28px;
+    padding-top: 2px;
+  }
+
+  .how-step h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--gray-6);
+    transition: color 0.2s;
+    letter-spacing: -0.01em;
+  }
+
+  .how-step.active h4 { color: var(--white); }
+  .how-step.active .how-step-num { color: var(--accent); }
+
+  .how-visual {
+    background: var(--gray-2);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-3);
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .how-visual-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(200,255,0,0.08);
+    border: 1px solid rgba(200,255,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .how-visual-icon svg { width: 28px; height: 28px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+
+  .how-visual h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .how-visual p {
+    font-size: 0.85rem;
+    color: var(--gray-6);
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  /* ─── PRICING ─────────────────────────────────────────── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .plan-card {
+    background: var(--gray-1);
+    border: 1px solid var(--gray-3);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plan-card:hover { border-color: var(--gray-4); transform: translateY(-3px); }
+
+  .plan-card.featured {
+    border-color: var(--accent);
+    background: rgba(200,255,0,0.03);
+  }
+
+  .plan-card.featured:hover { border-color: var(--accent-dim); }
+
+  .plan-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--black);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  .plan-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-5);
+    margin-bottom: 1rem;
+  }
+
+  .plan-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .plan-price-label {
+    font-size: 0.8rem;
+    color: var(--gray-5);
+    margin-bottom: 1.75rem;
+  }
+
+  .plan-divider {
+    height: 1px;
+    background: var(--gray-3);
+    margin-bottom: 1.75rem;
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+    margin-bottom: 2rem;
+  }
+
+  .plan-features li {
+    font-size: 0.84rem;
+    color: var(--gray-6);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    line-height: 1.4;
+  }
+
+  .plan-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .plan-cta {
+    display: block;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .plan-cta-outline {
+    border: 1px solid var(--gray-3);
+    color: var(--gray-6);
+  }
+
+  .plan-cta-outline:hover { border-color: var(--white); color: var(--white); }
+
+  .plan-cta-solid {
+    background: var(--accent);
+    color: var(--black);
+    border: 1px solid transparent;
+    font-weight: 600;
+  }
+
+  .plan-cta-solid:hover { background: var(--accent-dim); }
+
+  /* ─── TESTIMONIALS ────────────────────────────────────── */
+  .testimonials { background: var(--gray-1); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .testimonial-card {
+    background: var(--gray-2);
+    border: 1px solid var(--gray-3);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 1.25rem;
+  }
+
+  .star {
+    width: 14px;
+    height: 14px;
+    background: var(--accent);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+
+  .testimonial-card blockquote {
+    font-size: 0.9rem;
+    color: var(--gray-6);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .testimonial-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .av-1 { background: rgba(200,255,0,0.15); color: var(--accent); }
+  .av-2 { background: rgba(255,100,100,0.15); color: #FF6464; }
+  .av-3 { background: rgba(100,150,255,0.15); color: #6496FF; }
+
+  .testimonial-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .testimonial-biz {
+    font-size: 0.75rem;
+    color: var(--gray-5);
+  }
+
+  /* ─── FAQ ─────────────────────────────────────────────── */
+  .faq-list {
+    max-width: 720px;
+    margin: 4rem auto 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--gray-3);
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: left;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .faq-q:hover { color: var(--accent); }
+
+  .faq-indicator {
+    font-size: 1.2rem;
+    color: var(--gray-5);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-indicator { transform: rotate(45deg); color: var(--accent); }
+
+  .faq-a {
+    font-size: 0.88rem;
+    color: var(--gray-6);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.5rem; }
+
+  /* ─── CTA BANNER ──────────────────────────────────────── */
+  .cta-banner {
+    padding: 7rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(200,255,0,0.07) 0%, transparent 70%);
+  }
+
+  .cta-banner h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .cta-banner h2 em { font-style: normal; color: var(--accent); }
+
+  .cta-banner p {
+    font-size: 1rem;
+    color: var(--gray-6);
+    max-width: 420px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .cta-banner .hero-actions { justify-content: center; position: relative; }
+
+  /* ─── FOOTER ──────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--gray-3);
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--gray-1);
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--gray-5);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--gray-5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  /* ─── ANIMATIONS ──────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease forwards; }
+  .hero h1 { animation: fadeUp 0.7s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.7s 0.2s ease both; }
+  .hero-actions { animation: fadeUp 0.7s 0.3s ease both; }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 0 1.5rem 4rem; }
+    section { padding: 5rem 1.5rem; }
+    .about, .how-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .hero-bottom { flex-direction: column; align-items: flex-start; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Bold<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://wa.me/5491158077847?text=Hola!%20Quiero%20empezar%20con%20mi%20sitio%20web" class="nav-cta" target="_blank">Empezar ahora</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+
+  <span class="hero-tag">Diseño web para negocios reales</span>
+
+  <h1>Sitios Web que<br><em>Convierten</em><br>para tu Negocio</h1>
+
+  <div class="hero-bottom">
+    <p class="hero-sub">
+      Diseñamos y lanzamos tu presencia digital en tiempo récord.
+      Sin tecnicismos, sin vueltas — solo resultados.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5491158077847?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20Bold%20y%20tener%20mi%20sitio%20web" class="btn-primary" target="_blank">Quiero mi sitio →</a>
+      <a href="#proceso" class="btn-ghost">Ver cómo funciona</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <div class="marquee-item"><span class="marquee-dot"></span>Diseño Profesional</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Optimizado para Google</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Entrega en 7 días</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>100% Responsive</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Sin código</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Listo para vender</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Soporte incluido</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Diseño Profesional</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Optimizado para Google</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Entrega en 7 días</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>100% Responsive</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Sin código</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Listo para vender</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Soporte incluido</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="servicios">
+  <div>
+    <div class="section-label">Por qué Bold</div>
+    <h2 class="section-title">Tu negocio merece una presencia digital que venda</h2>
+    <p class="section-sub" style="margin-top:1rem;">
+      Combinamos diseño de alto impacto con estrategia de conversión.
+      No hacemos sitios bonitos — hacemos sitios que trabajan para vos las 24 horas.
+    </p>
+  </div>
+  <div class="about-stat-grid">
+    <div class="about-stat">
+      <div class="about-stat-num">+200</div>
+      <div class="about-stat-label">Negocios digitalizados en LATAM</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">7 días</div>
+      <div class="about-stat-label">De concepto a sitio publicado</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">3x</div>
+      <div class="about-stat-label">Más consultas promedio post-lanzamiento</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-num">100%</div>
+      <div class="about-stat-label">Clientes que recomiendan el servicio</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+  <div class="section-label">Servicios</div>
+  <h2 class="section-title">Todo lo que tu sitio necesita</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <h3>Diseño & Branding</h3>
+      <p>Identidad visual coherente, paleta de colores, tipografía y logo. Tu marca, consistente en todos lados.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Desarrollo Web</h3>
+      <p>Sitio rápido, seguro y responsive. Optimizado para aparecer en Google y cargar en menos de 2 segundos.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>Copy que convierte</h3>
+      <p>Textos pensados para generar acción. Cada sección diseñada para guiar al visitante hasta el contacto.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <h3>SEO Local</h3>
+      <p>Aparecer en Google cuando alguien busca tu servicio cerca. Configuración de Google Business incluida.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h3>Formularios & CRM</h3>
+      <p>Capturá leads directo desde tu sitio. Integración con WhatsApp, email y herramientas de gestión.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Mantenimiento</h3>
+      <p>Tu sitio siempre actualizado y seguro. Actualizaciones, backups y soporte técnico sin costo extra.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="proceso">
+  <div class="section-label">Proceso</div>
+  <h2 class="section-title">De idea a sitio online<br>en 4 pasos</h2>
+  <div class="how-inner">
+    <div class="how-steps">
+      <div class="how-step active" data-step="0">
+        <div class="how-step-num">01</div>
+        <div>
+          <h4>Hablamos y entendemos tu negocio</h4>
+        </div>
+      </div>
+      <div class="how-step" data-step="1">
+        <div class="how-step-num">02</div>
+        <div>
+          <h4>Diseñamos y vos aprobás</h4>
+        </div>
+      </div>
+      <div class="how-step" data-step="2">
+        <div class="how-step-num">03</div>
+        <div>
+          <h4>Desarrollamos y testeamos</h4>
+        </div>
+      </div>
+      <div class="how-step" data-step="3">
+        <div class="how-step-num">04</div>
+        <div>
+          <h4>Publicamos y te acompañamos</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-visual" id="how-visual">
+      <div class="how-visual-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3 id="how-vis-title">Una charla sin costo</h3>
+      <p id="how-vis-desc">Agendamos una llamada de 30 min para entender tu negocio, tu cliente ideal y qué querés lograr con tu sitio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="precios">
+  <div class="section-label">Precios</div>
+  <h2 class="section-title">Inversión clara,<br>sin sorpresas</h2>
+  <p class="section-sub" style="margin-top:1rem;">Un pago único. Sin suscripciones escondidas ni costos extra al final.</p>
+
+  <div class="pricing-grid">
+    <div class="plan-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">$350</div>
+      <div class="plan-price-label">USD · pago único</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Landing page de 1 página</li>
+        <li>Diseño profesional responsive</li>
+        <li>Formulario de contacto</li>
+        <li>Botón de WhatsApp</li>
+        <li>SEO básico</li>
+        <li>Hosting por 6 meses incluido</li>
+      </ul>
+      <a href="https://wa.me/5491158077847?text=Hola!%20Me%20interesa%20el%20plan%20Starter%20de%20Bold%20%28%24350%20USD%29" class="plan-cta plan-cta-outline" target="_blank">Empezar por WhatsApp →</a>
+    </div>
+
+    <div class="plan-card featured">
+      <div class="plan-badge">Más popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">$750</div>
+      <div class="plan-price-label">USD · pago único</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Sitio de hasta 5 páginas</li>
+        <li>Diseño con identidad visual</li>
+        <li>Blog o galería de trabajos</li>
+        <li>Google Analytics integrado</li>
+        <li>SEO avanzado + Google Business</li>
+        <li>Hosting por 12 meses incluido</li>
+        <li>1 mes de soporte post-lanzamiento</li>
+      </ul>
+      <a href="https://wa.me/5491158077847?text=Hola!%20Me%20interesa%20el%20plan%20Pro%20de%20Bold%20%28%24750%20USD%29" class="plan-cta plan-cta-solid" target="_blank">Empezar por WhatsApp →</a>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-name">Premium</div>
+      <div class="plan-price">$1,500</div>
+      <div class="plan-price-label">USD · pago único</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Sitio ilimitado + funciones avanzadas</li>
+        <li>Branding completo desde cero</li>
+        <li>E-commerce o sistema de reservas</li>
+        <li>Integración con CRM o WhatsApp Business</li>
+        <li>Copywriting profesional incluido</li>
+        <li>Hosting por 12 meses incluido</li>
+        <li>3 meses de soporte post-lanzamiento</li>
+      </ul>
+      <a href="https://wa.me/5491158077847?text=Hola!%20Me%20interesa%20el%20plan%20Premium%20de%20Bold%20%28%241500%20USD%29" class="plan-cta plan-cta-outline" target="_blank">Empezar por WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-label">Testimonios</div>
+  <h2 class="section-title">Lo que dicen<br>nuestros clientes</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <blockquote>Tenía el local hace 8 años sin presencia online. A la semana de lanzar el sitio ya empezamos a recibir consultas por Google. Increíble la diferencia.</blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar av-1">MG</div>
+        <div>
+          <div class="testimonial-name">Marcela García</div>
+          <div class="testimonial-biz">Peluquería MG · Palermo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <blockquote>El proceso fue clarísimo y el resultado superó mis expectativas. Mis clientes me dicen que el sitio transmite exactamente lo que somos. El WhatsApp no para.</blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar av-2">RL</div>
+        <div>
+          <div class="testimonial-name">Rodrigo López</div>
+          <div class="testimonial-biz">Estudio Contable RL · Villa Urquiza</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <blockquote>Pensé que iba a ser complicado y caro. Fue todo lo contrario — en 7 días tenía mi sitio live y funcionando. La inversión se pagó sola en el primer mes.</blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar av-3">VS</div>
+        <div>
+          <div class="testimonial-name">Valeria Sosa</div>
+          <div class="testimonial-biz">Catering Valeria · Belgrano</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-label">FAQ</div>
+  <h2 class="section-title" style="text-align:center;">Preguntas frecuentes</h2>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-q">
+        ¿En cuánto tiempo tengo mi sitio listo?
+        <span class="faq-indicator">+</span>
+      </button>
+      <div class="faq-a">En promedio, entre 5 y 10 días hábiles desde que aprobás el diseño. El plan Starter puede estar listo en 5 días. Los planes más completos suelen tomar hasta 2 semanas.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        ¿Necesito saber de tecnología para trabajar con ustedes?
+        <span class="faq-indicator">+</span>
+      </button>
+      <div class="faq-a">Para nada. Nos encargamos de todo el proceso técnico. Vos solo tenés que contarnos tu negocio, aprobarnos el diseño y listo. Sin tecnicismos.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        ¿Puedo hacer cambios después de que el sitio esté publicado?
+        <span class="faq-indicator">+</span>
+      </button>
+      <div class="faq-a">Sí. Todos los planes incluyen un período de soporte post-lanzamiento. Cambios menores como texto, fotos o colores se hacen sin costo adicional dentro del período incluido.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        ¿El hosting está incluido?
+        <span class="faq-indicator">+</span>
+      </button>
+      <div class="faq-a">Sí, todos los planes incluyen hosting por el período indicado (6 o 12 meses). Al vencimiento, el costo es de aprox. $150 USD/año para renovar.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">
+        ¿Puedo pagar en pesos argentinos?
+        <span class="faq-indicator">+</span>
+      </button>
+      <div class="faq-a">Sí, aceptamos pago en USD o en pesos al tipo de cambio del día. También podemos acordar un plan en cuotas para proyectos grandes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" style="background: var(--gray-1);">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Sitios que<br>ya están convirtiendo</h2>
+  <p class="section-sub" style="margin-top:1rem;">Cada proyecto, una solución a medida para el negocio detrás.</p>
+
+  <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:1.5rem; margin-top:4rem;" class="portfolio-grid">
+    <div class="portfolio-card" style="background:var(--gray-2); border:1px solid var(--gray-3); border-radius:var(--radius-lg); overflow:hidden; transition: transform 0.25s, border-color 0.25s;">
+      <div style="height:180px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; background: repeating-linear-gradient(45deg, rgba(200,255,0,0.03) 0px, rgba(200,255,0,0.03) 1px, transparent 1px, transparent 12px);"></div>
+        <span style="font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; color:#C8FF00; letter-spacing:-0.03em; position:relative;">Safarian<span style="color:white;">.</span></span>
+      </div>
+      <div style="padding:1.5rem;">
+        <div style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; font-weight:600;">Importadora · Palermo</div>
+        <h3 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:0.5rem; letter-spacing:-0.02em;">Grupo Safarian</h3>
+        <p style="font-size:0.82rem; color:var(--gray-6); line-height:1.5;">Landing page + catálogo de productos con formulario de consulta mayorista.</p>
+      </div>
+    </div>
+
+    <div class="portfolio-card" style="background:var(--gray-2); border:1px solid var(--gray-3); border-radius:var(--radius-lg); overflow:hidden; transition: transform 0.25s, border-color 0.25s;">
+      <div style="height:180px; background: linear-gradient(135deg, #0d1f0d 0%, #1a3a1a 50%, #0d2d0d 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; background: repeating-linear-gradient(90deg, rgba(100,255,100,0.04) 0px, rgba(100,255,100,0.04) 1px, transparent 1px, transparent 20px);"></div>
+        <span style="font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; color:#64FF64; letter-spacing:-0.03em; position:relative;">Verde<span style="color:white;">ar</span></span>
+      </div>
+      <div style="padding:1.5rem;">
+        <div style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; font-weight:600;">Paisajismo · Saavedra</div>
+        <h3 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:0.5rem; letter-spacing:-0.02em;">Verdear Jardines</h3>
+        <p style="font-size:0.82rem; color:var(--gray-6); line-height:1.5;">Sitio de 4 páginas con galería de proyectos, presupuesto online y SEO local.</p>
+      </div>
+    </div>
+
+    <div class="portfolio-card" style="background:var(--gray-2); border:1px solid var(--gray-3); border-radius:var(--radius-lg); overflow:hidden; transition: transform 0.25s, border-color 0.25s;">
+      <div style="height:180px; background: linear-gradient(135deg, #1f0a0a 0%, #3a1010 50%, #2d0808 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; background: radial-gradient(circle at 30% 70%, rgba(255,120,50,0.12) 0%, transparent 60%);"></div>
+        <span style="font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800; color:#FF7832; letter-spacing:-0.03em; position:relative;">Masa<span style="color:white;">&</span>Fuego</span>
+      </div>
+      <div style="padding:1.5rem;">
+        <div style="font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:0.5rem; font-weight:600;">Gastronomía · Núñez</div>
+        <h3 style="font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:0.5rem; letter-spacing:-0.02em;">Masa & Fuego Panadería</h3>
+        <p style="font-size:0.82rem; color:var(--gray-6); line-height:1.5;">Sitio con menú interactivo, horarios y reservas por WhatsApp directo.</p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .portfolio-card:hover { transform: translateY(-4px); border-color: var(--gray-4) !important; }
+    @media (max-width:900px) { .portfolio-grid { grid-template-columns: 1fr !important; } }
+  </style>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto" style="background: var(--black);">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5rem; align-items:start;" class="contact-inner">
+    <div>
+      <div class="section-label">Contacto</div>
+      <h2 class="section-title">Hablemos<br>sin vueltas</h2>
+      <p class="section-sub" style="margin-top:1rem;">Contame de tu negocio y en menos de 24hs te respondo con una propuesta.</p>
+
+      <div style="margin-top:3rem; display:flex; flex-direction:column; gap:1.5rem;">
+        <a href="https://wa.me/5491158077847?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20Bold" target="_blank" style="display:flex; align-items:center; gap:1rem; text-decoration:none; padding:1.25rem 1.5rem; background:rgba(200,255,0,0.07); border:1px solid rgba(200,255,0,0.2); border-radius:var(--radius-lg); transition: background 0.2s;" onmouseover="this.style.background='rgba(200,255,0,0.13)'" onmouseout="this.style.background='rgba(200,255,0,0.07)'">
+          <div style="width:44px; height:44px; border-radius:50%; background:rgba(200,255,0,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#C8FF00;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.566 4.148 1.55 5.889L.057 23.776a.5.5 0 0 0 .614.637l6.094-1.598A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6a9.554 9.554 0 0 1-4.92-1.358l-.353-.21-3.656.958.976-3.564-.229-.365A9.557 9.557 0 0 1 2.4 12C2.4 6.698 6.698 2.4 12 2.4S21.6 6.698 21.6 12 17.302 21.6 12 21.6z"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.75rem; color:var(--accent); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:2px;">WhatsApp</div>
+            <div style="font-size:0.95rem; color:var(--white); font-weight:500;">+54 9 11 5807-7847</div>
+          </div>
+        </a>
+
+        <a href="mailto:ignacio.perezroca@gmail.com" style="display:flex; align-items:center; gap:1rem; text-decoration:none; padding:1.25rem 1.5rem; background:var(--gray-1); border:1px solid var(--gray-3); border-radius:var(--radius-lg); transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--gray-5)'" onmouseout="this.style.borderColor='var(--gray-3)'">
+          <div style="width:44px; height:44px; border-radius:50%; background:var(--gray-2); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--gray-5);fill:none;stroke-width:1.5;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div style="font-size:0.75rem; color:var(--gray-5); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:2px;">Email</div>
+            <div style="font-size:0.95rem; color:var(--white); font-weight:500;">ignacio.perezroca@gmail.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div style="background:var(--gray-1); border:1px solid var(--gray-3); border-radius:var(--radius-lg); padding:2.5rem;">
+      <h3 style="font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:1.75rem;">Contame de tu negocio</h3>
+
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div>
+          <label style="font-size:0.75rem; color:var(--gray-5); letter-spacing:0.08em; text-transform:uppercase; font-weight:500; display:block; margin-bottom:0.4rem;">Nombre</label>
+          <input type="text" placeholder="Ej. Marcela García" id="cf-name" style="width:100%; background:var(--gray-2); border:1px solid var(--gray-3); border-radius:var(--radius); padding:0.75rem 1rem; color:var(--white); font-size:0.9rem; font-family:'Inter',sans-serif; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--gray-3)'">
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:var(--gray-5); letter-spacing:0.08em; text-transform:uppercase; font-weight:500; display:block; margin-bottom:0.4rem;">Rubro o negocio</label>
+          <input type="text" placeholder="Ej. Peluquería, consultorio, restaurante..." id="cf-biz" style="width:100%; background:var(--gray-2); border:1px solid var(--gray-3); border-radius:var(--radius); padding:0.75rem 1rem; color:var(--white); font-size:0.9rem; font-family:'Inter',sans-serif; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--gray-3)'">
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:var(--gray-5); letter-spacing:0.08em; text-transform:uppercase; font-weight:500; display:block; margin-bottom:0.4rem;">Plan que te interesa</label>
+          <select id="cf-plan" style="width:100%; background:var(--gray-2); border:1px solid var(--gray-3); border-radius:var(--radius); padding:0.75rem 1rem; color:var(--white); font-size:0.9rem; font-family:'Inter',sans-serif; outline:none; appearance:none; cursor:pointer; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--gray-3)'">
+            <option value="" style="background:var(--gray-2);">Elegí un plan</option>
+            <option value="Starter $350 USD" style="background:var(--gray-2);">Starter · $350 USD</option>
+            <option value="Pro $750 USD" style="background:var(--gray-2);">Pro · $750 USD</option>
+            <option value="Premium $1500 USD" style="background:var(--gray-2);">Premium · $1,500 USD</option>
+            <option value="No sé, quiero hablar" style="background:var(--gray-2);">No sé, quiero una recomendación</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:var(--gray-5); letter-spacing:0.08em; text-transform:uppercase; font-weight:500; display:block; margin-bottom:0.4rem;">Contame más (opcional)</label>
+          <textarea id="cf-msg" placeholder="¿Qué querés lograr con tu sitio?" rows="3" style="width:100%; background:var(--gray-2); border:1px solid var(--gray-3); border-radius:var(--radius); padding:0.75rem 1rem; color:var(--white); font-size:0.9rem; font-family:'Inter',sans-serif; outline:none; resize:vertical; transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--gray-3)'"></textarea>
+        </div>
+        <button onclick="sendToWhatsApp()" style="width:100%; background:var(--accent); color:var(--black); font-family:'Inter',sans-serif; font-size:0.9rem; font-weight:600; padding:0.9rem; border:none; border-radius:var(--radius); cursor:pointer; margin-top:0.5rem; transition:background 0.2s;" onmouseover="this.style.background='#9FCC00'" onmouseout="this.style.background='var(--accent)'">Enviar por WhatsApp →</button>
+        <p style="font-size:0.75rem; color:var(--gray-5); text-align:center; line-height:1.5;">Al hacer click se abre WhatsApp con tu mensaje listo. Sin formularios perdidos.</p>
+      </div>
+    </div>
+  </div>
+  <style>
+    @media (max-width:900px) { .contact-inner { grid-template-columns: 1fr !important; gap: 3rem !important; } }
+  </style>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>¿Listo para que<br>tu negocio <em>crezca</em>?</h2>
+  <p>Una charla de 30 minutos es todo lo que hace falta. Sin compromiso, sin costo.</p>
+  <div class="hero-actions">
+    <a href="https://wa.me/5491158077847?text=Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20Bold%20y%20tener%20mi%20sitio%20web" class="btn-primary" target="_blank">Hablar por WhatsApp →</a>
+    <a href="mailto:ignacio.perezroca@gmail.com" class="btn-ghost">Enviar un email</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bold<span>.</span></div>
+  <div class="footer-copy">© 2025 Bold Makers · Buenos Aires, Argentina</div>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#precios">Precios</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="https://wa.me/5491158077847" target="_blank">WhatsApp</a>
+    <a href="mailto:ignacio.perezroca@gmail.com">Email</a>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/5491158077847?text=Hola!%20Vi%20Bold%20y%20quiero%20saber%20m%C3%A1s" target="_blank" id="wa-float" style="position:fixed; bottom:1.75rem; right:1.75rem; z-index:200; width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.35); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(37,211,102,0.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.35)'">
+  <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:white;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.143.566 4.148 1.55 5.889L.057 23.776a.5.5 0 0 0 .614.637l6.094-1.598A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6a9.554 9.554 0 0 1-4.92-1.358l-.353-.21-3.656.958.976-3.564-.229-.365A9.557 9.557 0 0 1 2.4 12C2.4 6.698 6.698 2.4 12 2.4S21.6 6.698 21.6 12 17.302 21.6 12 21.6z"/></svg>
+</a>
+
+<script>
+  function sendToWhatsApp() {
+    const name = document.getElementById('cf-name').value.trim();
+    const biz = document.getElementById('cf-biz').value.trim();
+    const plan = document.getElementById('cf-plan').value;
+    const msg = document.getElementById('cf-msg').value.trim();
+    if (!name || !biz) { alert('Por favor completá tu nombre y rubro.'); return; }
+    let text = `Hola! Me contacto desde boldmakers.com\n\n*Nombre:* ${name}\n*Negocio:* ${biz}`;
+    if (plan) text += `\n*Plan:* ${plan}`;
+    if (msg) text += `\n*Mensaje:* ${msg}`;
+    window.open(`https://wa.me/5491158077847?text=${encodeURIComponent(text)}`, '_blank');
+  }
+  const steps = [
+    {
+      icon: `<svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:#C8FF00;fill:none;stroke-width:1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+      title: "Una charla sin costo",
+      desc: "Agendamos una llamada de 30 min para entender tu negocio, tu cliente ideal y qué querés lograr con tu sitio."
+    },
+    {
+      icon: `<svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:#C8FF00;fill:none;stroke-width:1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
+      title: "Diseño a medida",
+      desc: "Creamos el diseño de tu sitio basado en tu negocio. Te mostramos mockups y ajustamos todo hasta que quedes conforme."
+    },
+    {
+      icon: `<svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:#C8FF00;fill:none;stroke-width:1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+      title: "Desarrollo & testing",
+      desc: "Desarrollamos tu sitio, lo optimizamos para todos los dispositivos y hacemos pruebas de velocidad, SEO y formularios."
+    },
+    {
+      icon: `<svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:#C8FF00;fill:none;stroke-width:1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
+      title: "Publicación & soporte",
+      desc: "Tu sitio va online. Te explicamos cómo usarlo y nos quedamos disponibles para ajustes en los primeros meses."
+    }
+  ];
+
+  document.querySelectorAll('.how-step').forEach(step => {
+    step.addEventListener('click', () => {
+      document.querySelectorAll('.how-step').forEach(s => s.classList.remove('active'));
+      step.classList.add('active');
+      const i = parseInt(step.dataset.step);
+      document.getElementById('how-visual').querySelector('.how-visual-icon').innerHTML = steps[i].icon;
+      document.getElementById('how-vis-title').textContent = steps[i].title;
+      document.getElementById('how-vis-desc').textContent = steps[i].desc;
+    });
+  });
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySel
